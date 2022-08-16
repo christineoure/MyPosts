@@ -17,20 +17,20 @@ class RetrofitRvAdapter (var context: Context, var postlist: List<Post>):
 
     override fun onBindViewHolder(holder: RetrofitViewHolder, position: Int) {
 //        val context = holder.itemView.context
-        var currentItem = postlist.get(position)
+        var currentPost = postlist.get(position)
 
         holder.bindingView.cvPosts.setOnClickListener {
             val  intent = Intent(context, CommentAvtivity::class.java)
-            intent.putExtra("POST_ID", currentItem.id)
+            intent.putExtra("POST_ID", currentPost.id)
             context.startActivity(intent)
         }
 
         with(holder.bindingView){
 
-            tvUserId.text = currentItem.userId.toString()
-            tvId.text = currentItem.id.toString()
-            tvTitle.text = currentItem.title
-            tvBody.text = currentItem.body
+            tvUserId.text = currentPost.userId.toString()
+            tvId.text = currentPost.id.toString()
+            tvTitle.text = currentPost.title
+            tvBody.text = currentPost.body
         }
 
     }
