@@ -1,6 +1,7 @@
 package dev.oure.myposts
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +11,7 @@ class RetrofitRvAdapter (var context: Context, var postlist: List<Post>):
     RecyclerView.Adapter<RetrofitViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RetrofitViewHolder {
         var bindingView = RetrofitPostsListBinding
-            .inflate(LayoutInflater.from(context), parent, false)
+            .inflate(LayoutInflater.from(parent.context), parent, false)
         return RetrofitViewHolder(bindingView)
     }
 
@@ -18,6 +19,11 @@ class RetrofitRvAdapter (var context: Context, var postlist: List<Post>):
 //        val context = holder.itemView.context
         var currentItem = postlist.get(position)
 
+        holder.bindingView.cvPosts.setOnClickListener {
+            val  intent = Intent(context, CommentAvtivity::class.java)
+            intent.putExtra("POST_ID", currentItem.id)
+            context.startActivity(intent)
+        }
 
         with(holder.bindingView){
 

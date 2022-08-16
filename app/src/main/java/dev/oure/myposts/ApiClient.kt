@@ -14,3 +14,17 @@ object ApiClient {
         return retrofit.create(apiInterface)
     }
 }
+
+fun main(){
+
+}
+
+interface Television {
+    fun switchOn()
+    fun switchOff()
+    fun adjustVolume(level: Int)
+    fun switchChannel()
+}
+
+//class Sony Television{
+//}
