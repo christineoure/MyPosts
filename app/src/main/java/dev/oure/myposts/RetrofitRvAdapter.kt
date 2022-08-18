@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.oure.myposts.databinding.RetrofitPostsListBinding
 
-class RetrofitRvAdapter (var context: Context, var postlist: List<Post>):
+class RetrofitRvAdapter (var postlist: List<Post>):
     RecyclerView.Adapter<RetrofitViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RetrofitViewHolder {
         var bindingView = RetrofitPostsListBinding
@@ -19,6 +19,7 @@ class RetrofitRvAdapter (var context: Context, var postlist: List<Post>):
 //        val context = holder.itemView.context
         var currentPost = postlist.get(position)
 
+        var context = holder.itemView.context
         holder.bindingView.cvPosts.setOnClickListener {
             val  intent = Intent(context, CommentAvtivity::class.java)
             intent.putExtra("POST_ID", currentPost.id)
